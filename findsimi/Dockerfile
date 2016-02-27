@@ -7,13 +7,7 @@ RUN set -ex \
 	&& tar zxvf findsimi.tar.gz \
 	&& rm -rf findsimi.tar.gz
 
-#Redis
-#CMD ["redis-server", "/src/findsimi/redis/tindex/redis6360.conf"]
-#CMD ["redis-server", "/src/findsimi/redis/gindex/redis6361.conf"]
-#CMD ["redis-server", "/src/findsimi/redis/sindex/redis6362.conf"]
+#Redis & Revel
 ADD ./redis.sh /redis.sh
-CMD ["/redis.sh"]
-
-#Revel
 EXPOSE 800
-CMD ["/run.sh"]
+CMD /redis.sh && /run.sh
